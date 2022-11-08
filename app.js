@@ -1,4 +1,11 @@
-let board = document.querySelector(".board");
+// DOM variables
+const resetBtn = document.querySelector('.reset');
+const eraserBtn = document.querySelector('.eraser');
+const rainboPukeBtn = document.querySelector('.rainboPuke');
+const board = document.querySelector(".board");
+const slider = document.getElementById("sizeSlider");
+const sliderValue = document.querySelector('.sliderValue');
+const applyBtn = document.querySelector('.apply');
 
 //draw the board with the size parsed in.
 function drawBoard(size) {
@@ -16,7 +23,11 @@ function drawBoard(size) {
 
 drawBoard(16);
 
-// Function to change the size of the board.
-function changeSize(size){
-    if(size >= 1 && size <= 500){}
+// Resets the drawring board by redrawring it.
+resetBtn.addEventListener("click", () => drawBoard(currentSize));
+
+slider.oninput = function () {
+    sliderValue.textContent = slider.value;
 }
+
+applyBtn.addEventListener("click", drawBoard(32));
